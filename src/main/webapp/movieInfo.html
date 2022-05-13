@@ -8,52 +8,69 @@
     <title>test</title>
 </head>
 
+<style>
+    .f1 {
+        float: left;
+    }
+
+    .f2 {
+        float: left;
+    }
+
+    .f3 {
+        display: inline-block
+    }
+</style>
+
 <body>
     <div class="f1">
-        <div class="f1-1"></div>
-        <div class="f1-2">
-            <a href="">예매하기</a>
-        </div>
+        <div class="poster"></div>
+        <div class="reserve"></div>
     </div>
 
     <div class="f2">
         <h1 class="title"></h1>
-        <h3 class="info" ></h3>
+        <h3 class="info"></h3>
     </div>
 
     <div class="f3">
         <p></p>
     </div>
 
-    <div class="f4"></div>
+    <div class="f4">
+        <div class="youtube"></div>
+    </div>
 
     <div class="f5"></div>
 
     <script>
         let key = "6446bae76aaffa9af6d4c00b2299f016";
-        let base_url = "https://image.tmdb.org/t/p/w500";
-
-        let container = document.querySelector(".container");
-        let body = document.querySelector("body");
 
         let srcPara = new URL(location.href).searchParams;
         let name = srcPara.get('title');
-        
-        function fetchMovie(page) {
+
+        // div class 요소
+        let f1 = document.querySelector('.f1');
+        let f2 = document.querySelector('.f2');
+        let f3 = document.querySelector('.f3');
+        let f4 = document.querySelector('.f4');
+        let f5 = document.querySelector('.f5');
+
+        function infoPage() {
+            fetchMovie();
+            fetchVideo();
+        }
+
+        function fetchMovie() {
             // let url = `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${name}&language=ko-KR`;
-            let url = `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=기생충&language=ko-KR`;
+            let url = `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=가타카&language=ko-KR`;
+            let base_url = "https://image.tmdb.org/t/p/w500";
+
             fetch(url)
                 .then(res => res.json())
-                .then(function (res) {
+                .then(res => {
 
                     console.log(res.results[0]);
-
-                    // div class 요소
-                    let f1 = document.querySelector('.f1');
-                    let f2 = document.querySelector('.f2');
-                    let f3 = document.querySelector('.f3');
-                    let f4 = document.querySelector('.f4');
-                    let f5 = document.querySelector('.f5');
 
                     // query 결과확인
                     let movie = res.results[0];
@@ -69,24 +86,57 @@
                     imgTag.setAttribute('width', '300');
                     imgTag.src = poster;
 
+                    console.log(imgTag);
+
                     f1.firstElementChild.appendChild(imgTag);
+
+                    // f1-2 reserve button
+                    let rsTag = document.createElement('a');
+                    rsTag.innerHTML = '예매하기';
+                    rsTag.href = `${title}어디론가갑니다`
+                    f1.lastElementChild.appendChild(rsTag);
 
                     // f2 info
                     let titleTag = document.querySelector('.title');
                     titleTag.innerHTML = title;
+                    f2.appendChild(titleTag);
 
                     let infoTag = document.querySelector('.info');
-                    
+
                     // f3 overview
                     let ovTag = document.querySelector('.f3');
                     ovTag.firstElementChild.innerHTML = overview;
-                    
-    
+
+
                 })
                 .catch(error => console.log(error));
         };
 
-        window.addEventListener('onLoad', fetchMovie());
+        function fetchVideo() {
+            // let url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${key}&language=en-EN`;
+            let url = `https://api.themoviedb.org/3/movie/782/videos?api_key=${key}&language=en-EN`;
+            let youtube = document.querySelector('.youtube');
+
+            fetch(url)
+                .then(res => res.json())
+                .then(res => {
+                    let ary = res.results;
+                    console.log(ary);
+
+                    ary.forEach(element => {
+                        let vid = document.createElement('iframe');
+                        let key = element.key;
+                        vid.src = `https://www.youtube.com/embed/${key}?autoplay=0`;
+                        youtube.appendChild(vid);
+                    });
+                })
+        }
+
+        function fetchComment() {
+            
+        }
+
+        window.addEventListener('onLoad', infoPage());
     </script>
 
 
