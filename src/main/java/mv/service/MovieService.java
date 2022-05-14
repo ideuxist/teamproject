@@ -1,5 +1,7 @@
 package mv.service;
 
+import java.util.List;
+
 import mv.dao.MovieDAO;
 import mv.vo.MovieVO;
 
@@ -10,11 +12,15 @@ public class MovieService {
 		dao.insertMember(vo);
 	}	 
 	
-	public void memberModify(String id) {
-		dao.updateMember(id);
+	public void memberModify(MovieVO vo) {
+		dao.updateMember(vo);
 	}
 	
 	public MovieVO memberSelect(String id) {
 		return dao.selectMember(id);
+	}
+
+	public List<MovieVO> movieHistory(String id) {
+		return dao.movieHistory(id);
 	}
 }

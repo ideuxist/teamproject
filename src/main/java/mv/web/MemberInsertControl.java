@@ -17,11 +17,17 @@ public class MemberInsertControl implements Control {
 		String name = request.getParameter("name");
 		String id = request.getParameter("id");
 		String passwd = request.getParameter("passwd");
+		String passwdcf = request.getParameter("passwdcf");
+		
+		if (passwd == passwdcf) {
+			
+		}
 		
 		MovieVO vo = new MovieVO();
 		vo.setId(id);
 		vo.setName(name);
 		vo.setPasswd(passwd);
+		
 		
 		MovieService service = new MovieService();
 		service.memberInsert(vo);

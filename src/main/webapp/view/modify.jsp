@@ -8,8 +8,10 @@
 </head>
 <body>
   <h3>비밀번호 수정페이지입니다</h3>
-  변경 전 비밀번호 <input type="password"><br>
-  변경 후 비밀번호 <input type="password"><br>
+  <form action="${pageContext.servletContext.contextPath }/memberUpdate.do" method="post">
+  <input type="password" name="passwd" placeholder="변경할 비밀번호"><br>
+  <input type="hidden" name="id" value=${id }>
   <input type="submit" value="수정"><br>
+  </form>
 </body>
 </html>

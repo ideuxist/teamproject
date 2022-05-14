@@ -8,7 +8,7 @@
 </head>
 <body>
   <h3>마이페이지입니다</h3>
-  <a href="">비밀번호변경</a><br>
-  <a href="">예매내역</a>
+  <a href="thirdLogin.jsp">비밀번호변경</a><br>
+  <a href="secondLogin.jsp">나의예매내역</a>
 </body>
 </html>

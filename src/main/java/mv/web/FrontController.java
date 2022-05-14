@@ -17,9 +17,10 @@ public class FrontController extends HttpServlet{
 		charset = config.getInitParameter("charset");
 		list = new HashMap<String, Control>();
 		list.put("/memberInsert.do", new MemberInsertControl());
-		list.put("/reservationList.do", new MovieListControl());
+		list.put("/movieHistory.do", new MovieHistoryControl());
 		list.put("/memberUpdate.do", new MemberUpdateControl());
 		list.put("/memberSearch.do", new MemberSearchControl());
+	
 	}
 	
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

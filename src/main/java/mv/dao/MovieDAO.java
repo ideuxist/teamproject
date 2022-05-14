@@ -1,10 +1,39 @@
 package mv.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import mv.vo.MovieVO;
 
 public class MovieDAO extends DAO{
+	
+	public List<MovieVO> movieHistory(String id) {
+		conn= getConnect();
+		List<MovieVO> list = new ArrayList<MovieVO>();
+		String sql="select * from movie_history where id = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				MovieVO vo = new MovieVO();
+				vo.setMovieTitle(rs.getString("movie_title"));
+				vo.setMovieRoom(rs.getString("movie_room"));
+				vo.setMovieDate(rs.getString("movie_date"));
+				
+				list.add(vo);
+			}
+			return list;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return null;
+	}
+	
 
 	public void insertMember(MovieVO vo) {
 		conn = getConnect();
@@ -26,8 +55,22 @@ public class MovieDAO extends DAO{
 		
 	}
 
-	public void updateMember(String id) {
-		// TODO Auto-generated method stub
+	public void updateMember(MovieVO vo) {
+		conn = getConnect();
+		String sql = "update movie_member set passwd = ? where id=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getPasswd());
+			psmt.setString(2, vo.getId());
+			int r = psmt.executeUpdate();
+			System.out.println(r+"건 수정됨");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		
+		
 		
 	}
 
@@ -47,8 +90,6 @@ public class MovieDAO extends DAO{
 				vo.setPasswd(rs.getString("passwd"));
 				return vo;
 			}
-			
-			System.out.println("로그인완료");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>index test</title>
 </head>
 <body>
-<h3>예매내역 출력페이지입니다</h3>
+<h3>임시메인입니다</h3>
 </body>
 </html>

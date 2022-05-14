@@ -4,7 +4,16 @@ public class MovieVO {
 	String name;
 	String id;
 	String passwd;
+	String movieTitle;
+	String movieDate;
+	String movieRoom;
 	
+	public String getMovieRoom() {
+		return movieRoom;
+	}
+	public void setMovieRoom(String movieRoom) {
+		this.movieRoom = movieRoom;
+	}
 	public String getName() {
 		return name;
 	}
@@ -23,4 +32,24 @@ public class MovieVO {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
+	public String getMovieTitle() {
+		return movieTitle;
+	}
+	public void setMovieTitle(String movieTitle) {
+		this.movieTitle = movieTitle;
+	}
+	public String getMovieDate() {
+		return movieDate;
+	}
+	public void setMovieDate(String movieDate) {
+		this.movieDate = movieDate;
+	}
+	@Override
+	public String toString() {
+		return "MovieVO [movieTitle=" + movieTitle + ", movieDate=" + movieDate + ", movieRoom=" + movieRoom + "]";
+	}
+	
+	
+	
+	
 }
