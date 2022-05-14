@@ -1,4 +1,4 @@
-let key = "90ad618fa3d2f888905f0b844cbb97df";
+ let key = "90ad618fa3d2f888905f0b844cbb97df";
 let base_url = "https://image.tmdb.org/t/p/w500";
 
 Authentication = {

@@ -9,7 +9,7 @@ fetch(url, options)
   .catch((error) => console.log("error:", error));
   // option 객체 : HTTP 방식(method), HTTP 요청 헤더(headers), HTTP 요청 전문(body)
   // response 객체 : HTTP 응답 상태(status), HTTP 응답 헤더(headers), HTTP 응답 전문(body)
-  // fetch() 함수는 엄밀히 window 객체에 소속되어 window.fetch()로 사용되기도 한다.
+  //  fetch() 함수는 엄밀히 window 객체에 소속되어 window.fetch()로 사용되기도 한다.
 
 
   // GET 호출
