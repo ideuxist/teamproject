@@ -20,7 +20,7 @@ public class FrontController extends HttpServlet{
 		list.put("/movieHistory.do", new MovieHistoryControl());
 		list.put("/memberUpdate.do", new MemberUpdateControl());
 		list.put("/memberSearch.do", new MemberSearchControl());
-	
+		list.put("/memberIdCheck.do", new MemberIdCheckControl());
 	}
 	
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

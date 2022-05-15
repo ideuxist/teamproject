@@ -8,6 +8,39 @@ import mv.vo.MovieVO;
 
 public class MovieDAO extends DAO{
 	
+	 public boolean duplicateIdCheck(String id)
+	    {	
+		 	boolean x = false;
+	        conn = getConnect();
+	        String sql="SELECT ID FROM movie_MEMBER WHERE ID=?";
+	        try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, id);
+				rs = psmt.executeQuery();
+				if(rs.next()) x=true;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+			return x;
+	        
+	    } // end duplicateIdCheck()
+
+	
+private static MovieDAO instance;
+    
+    // 싱글톤 패턴
+    public MovieDAO(){}
+    public static MovieDAO getInstance(){
+        if(instance==null)
+            instance=new MovieDAO();
+        return instance;
+    }
+
+
+	
 	public List<MovieVO> movieHistory(String id) {
 		conn= getConnect();
 		List<MovieVO> list = new ArrayList<MovieVO>();
