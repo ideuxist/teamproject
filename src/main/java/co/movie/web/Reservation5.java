@@ -31,7 +31,7 @@ public class Reservation5 extends HttpServlet {
 		String round = request.getParameter("round");
 		
 		ReservationService service = new ReservationService();
-		List<ReserSeat> list = service.ReserSeat();
+		//List<ReserSeat> list = service.ReserSeat();
 		request.getRequestDispatcher("reservation/reservation.tiles").forward(request, response);
 		
 		
