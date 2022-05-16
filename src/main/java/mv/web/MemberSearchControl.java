@@ -49,20 +49,27 @@ public class MemberSearchControl implements Control {
 			MovieVO member = service.memberSelect(id);
 			
 			if (member == null) {
-				request.setAttribute("result", "아이디나 비밀번호를 다시 확인해주세요.");
+				request.setAttribute("result", "아이디를 다시 확인해주세요.");
 				request.getRequestDispatcher(path).forward(request, response);
 			} 
 			
 			else {// 로그인 성공하면 메인으로 보냄 "" 민욱이가 만든 메인 주소로 대체해야 함 -> 로그인 됐다고 표시 필요 -> 어떻게? -> getSession?
-				HttpSession session = null;
 				
-				session = request.getSession();
-				session.setAttribute("id", id);
-				session.setAttribute("pass", passwd);
-				
-				response.sendRedirect("testIndex.jsp");
-				
-				//request.getRequestDispatcher("testIndex.jsp").forward(request, response);
+				if (passwd.equals(member.getPasswd())) {
+					
+					HttpSession session = null;
+					
+					session = request.getSession();
+					session.setAttribute("id", id);
+					session.setAttribute("pass", passwd);
+					
+					response.sendRedirect("testIndex.jsp");
+					
+					//request.getRequestDispatcher("testIndex.jsp").forward(request, response);
+				} else {
+					request.setAttribute("result", "비밀번호를 다시 확인해주세요.");
+					request.getRequestDispatcher(path).forward(request, response);
+				}
 			} 
 			
 		// 예매 내역   	
@@ -75,12 +82,17 @@ public class MemberSearchControl implements Control {
 			MovieVO member = service.memberSelect(id);
 
 			if (member == null) {
-				request.setAttribute("result", "아이디나 비밀번호를 다시 확인해주세요.");
+				request.setAttribute("result", "아이디를 확인해주세요.");
 				request.getRequestDispatcher(path).forward(request, response);
 			} else {
-				List<MovieVO> list = service.movieHistory(id);
-				request.setAttribute("all", list);
-				request.getRequestDispatcher("result/historyOutput.jsp").forward(request, response);
+				if (passwd.equals(member.getPasswd())) {
+					List<MovieVO> list = service.movieHistory(id);
+					request.setAttribute("all", list);
+					request.getRequestDispatcher("result/historyOutput.jsp").forward(request, response);
+				} else {
+					request.setAttribute("result", "비밀번호를 다시 확인해주세요.");
+					request.getRequestDispatcher(path).forward(request, response);
+				}
 			}
 
 		} else if (job.equals("update")) {
@@ -91,11 +103,16 @@ public class MemberSearchControl implements Control {
 			MovieVO member = service.memberSelect(id);
 
 			if (member == null) {
-				request.setAttribute("result", "아이디나 비밀번호를 다시 확인해주세요.");
+				request.setAttribute("result", "아이디를 확인해주세요.");
 				request.getRequestDispatcher(path).forward(request, response);
 			} else {
-				request.setAttribute("id", id);
-				request.getRequestDispatcher("view/modify.jsp").forward(request, response);
+				if (passwd.equals(member.getPasswd())) {
+					request.setAttribute("id", id);
+					request.getRequestDispatcher("view/modify.jsp").forward(request, response);
+				} else {
+					request.setAttribute("result", "비밀번호를 다시 확인해주세요.");
+					request.getRequestDispatcher(path).forward(request, response);
+				}
 			}
 		}
 	}
