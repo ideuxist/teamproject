@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import mv.service.MovieService;
 import mv.vo.MovieVO;
@@ -52,15 +53,18 @@ public class MemberSearchControl implements Control {
 				request.getRequestDispatcher(path).forward(request, response);
 			} 
 			
-			else {// 로그인 성공하면 메인으로 보냄 "" 민욱이가 만든 메인 주소로 대체해야 함 -> 로그인 됐다고 표시 필요 -> 어떻게?
-				request.getRequestDispatcher("testIndex.jsp").forward(request, response);
+			else {// 로그인 성공하면 메인으로 보냄 "" 민욱이가 만든 메인 주소로 대체해야 함 -> 로그인 됐다고 표시 필요 -> 어떻게? -> getSession?
+				HttpSession session = null;
+				
+				session = request.getSession();
+				session.setAttribute("id", id);
+				session.setAttribute("pass", passwd);
+				
+				response.sendRedirect("testIndex.jsp");
+				
+				//request.getRequestDispatcher("testIndex.jsp").forward(request, response);
 			} 
 			
-//			else {// 로그인 성공하면 로그인 아웃풋 페이지 띄움 -> 로그인 성공 여부는 확실히 알 수 있지만 페이지가 또 생기고 번거로움
-//				request.setAttribute("member", member);
-//				request.getRequestDispatcher("result/loginOutput.jsp").forward(request, response);
-//			}
-		
 		// 예매 내역   	
 		} else if (job.equals("history")) {
 
