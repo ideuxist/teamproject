@@ -18,14 +18,16 @@
             text-align: center;
         }
         ul li {
-            
+            margin-right : 20px;
             list-style-type: none;
             display: inline-block;
         }
         #goToLeft{
             padding-right: 100px;
         }
-        
+        #mainLogo{
+            font-size: 30px;
+        }
         #goToRight{
             padding-left: 100px;
         }
@@ -34,7 +36,7 @@
             margin: 0px 10px 0 10px;
             text-decoration:none;
             background-color:  black;
-            font-size: 22px;
+
             font-weight: bold;
             font-style: italic;
             color : white;
@@ -49,20 +51,40 @@
         }
         body img {
             margin: 20px;
+ 
         }
 
         body img a{
             color : white;
         }
 
+        .layer {
+            background-size: cover;
+            background-color: rgba(0, 0, 0, 0.4); 
+        }
         body p {
             position: absolute;
             opacity: 0;
         }
-        body #p :hover { 
-            opacity: 0.5;
-            background-color: gray;
-            color: white;
+    
+        img :hover{
+            background-color: aquamarine;
+        }
+         table tr input{
+            width: 90px;
+             height: 40px;
+         }
+         #a{
+             margin :0 245px 0 20px;
+         }
+         #b{
+             margin : 0 246px 0 0;
+         }
+         #c{
+             margin : 0 246px 0 0;
+         }
+         #d{
+             margin : 0 246px 0 0;
          }
 
 
@@ -84,14 +106,23 @@
         <p id = "box">박스오피스</p>
     </form>
   </header>
-  <!--사진 설명란 파트-->
-  <p id = "p"></p>
-  <div id = "body">
-    
-  </div>
-  <footer id = "footer">
 
-  </footer>
+  
+  <div id = "body">
+    <table id = "table">
+    </table>
+    <form action ="" method="get">
+        <table>
+            <tr>
+                <td><input type = "button" value = "예매하기" id = "a"></td>
+                <td><input type = "button" value = "예매하기" id = "b"></td>
+                <td><input type = "button" value = "예매하기" id = "c"></td>
+                <td><input type = "button" value = "예매하기" id = "d"></td>
+            </tr>
+        </table>
+    </form>
+  </div>
+  <footer id = "footer"></footer>
   <script src = "main.js"></script>
   
 

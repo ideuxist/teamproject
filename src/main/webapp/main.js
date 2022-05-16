@@ -19,41 +19,35 @@ fetch(popularityURL)
 
   
     // body
+    // image -> a -> td -> tr -> table
+    let tr = document.createElement('tr');
+    let td = document.createElement('td');
     for(let i = 0; i < 4; i++){
       // poster 주소값
       let poster = posterBase_url + res.results[i].poster_path;
-      
+      let movie_id = res.results[i].id;
+      let movie_title = res.results[i].original_title;
+
+
       // img 태그 생성 및 속성 값 설정
       let imgTag = document.createElement('img');
       let aTag = document.createElement('a');
-      let pTag = document.getElementById('p');
+      
 
       aTag.appendChild(imgTag);
-      body.appendChild(aTag);
-      body.appendChild(pTag);
+      td.appendChild(aTag);
+      tr.appendChild(td);
+      table.appendChild(tr);
+      
 
       imgTag.setAttribute('width', '300');
+      imgTag.setAttribute('class', 'layer')
       aTag.href = '/src/main/webapp/do.html';
-      pTag.innerHTML = res.results[i].original_title;
+      console.log(movie_title);
+      aTag.value = movie_title;
       imgTag.src = poster;
       
       
-      
-      
-
-      // 상세 설명 값을 위한 fetch
-      let movie_id = res.results[i].id;
-      let movie_title = res.results[i].original_title;
-      let detailsURL = `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=kr-KR&query=${movie_title}&page=1`;
-      fetch(detailsURL)
-        .then(res => res.json())
-        .then((res)=>{
-          console.log(res)
-          console.log(res.results[0].overview);
-          let p = document.getElementById('p');
-          
-        })
-        .catch(error => console.log(error))
     }
 
 
