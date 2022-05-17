@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections.bag.SynchronizedSortedBag;
+
 import co.reservation.service.ReservationService;
 import co.reservation.vo.Movie;
 import co.reservation.vo.Screening;
@@ -36,6 +38,7 @@ public class ScreeningChoice extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String action = request.getParameter("choice");
 		System.out.println(action);
+		
 		if (action.equals("choiceDate")){
 			ReservationService service = new ReservationService();
 			List<Screening> dateList = service.choiceDate();
@@ -52,7 +55,22 @@ public class ScreeningChoice extends HttpServlet {
 			request.setAttribute("selectedDate", date);
 			request.setAttribute("movieList", movieList);
 			request.getRequestDispatcher("reservation/reservation.tiles").forward(request, response);
+		
 		}else if (action.equals("round")) {
+			String date = request.getParameter("selectedDate");
+			String movie = request.getParameter("selectedMovie");
+			ReservationService service = new ReservationService();
+			List<Screening> screening = service.choiceRound(date,movie);
+			System.out.println(screening);
+			request.setAttribute("selectedDate", date);
+			request.setAttribute("selectedMovie", movie);
+			request.setAttribute("round", screening);
+			request.getRequestDispatcher("reservation/reservation.tiles").forward(request, response);
+			
+		}else if (action.equals("searchSeat")) {
+			String date = request.getParameter("date");
+			String movie = request.getParameter("movie");
+			String startTime = request.getParameter("time");
 			
 		}
 		

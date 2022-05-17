@@ -15,7 +15,7 @@ public class DAO {
 	public PreparedStatement psmt;
 
 	
-	public String url = "jdbc:oracle:thin:@dbdeuxist01_medium?TNS_ADMIN=C:\\\\Users\\\\admin\\\\Downloads\\\\Wallet_DBdeuxist01";
+	public String url = "jdbc:oracle:thin:@dbdeuxist01_high?TNS_ADMIN=C:\\\\Dev\\\\Wallet_DBdeuxist01";
 	public String id = "admin";
 	public String pass = "Yd0534212460";
 	

@@ -17,6 +17,11 @@ public class ReservationService {
 
 	public List<Movie> choiceMoive(String date) {
 		return dao.movieChoice(date);
+	}
+
+	public List<Screening> choiceRound(String date,String title) {
+		// TODO Auto-generated method stub
+		return dao.roundChoice(date,title);
 	} 
 }
 		

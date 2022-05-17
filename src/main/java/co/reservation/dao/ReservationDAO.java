@@ -38,7 +38,7 @@ public class ReservationDAO extends DAO {
 	public List<Movie> movieChoice(String date) {
 		conn = getConn();
 		List<Movie> list = new ArrayList<Movie>();
-		String sql = "select movie_title\r\n"
+		String sql = "select distinct movie_title\r\n"
 				+ "from movie m\r\n"
 				+ "inner join screening s\r\n"
 				+ "on m.movie_id = s.movie_id\r\n"
@@ -62,5 +62,30 @@ public class ReservationDAO extends DAO {
 		
 		return list; 
 	}
+
+	public List<Screening> roundChoice(String date,String title) {
+		conn = getConn();
+		List<Screening> list = new ArrayList<Screening>();
+		String sql = "select to_char(screening_start,'hh24:mi') as start_time  from movie m\r\n"
+				+ "inner join screening s on m.movie_id=s.movie_id\r\n"
+				+ "where to_char(s.screening_start,'yy-mm-dd')=? and movie_title=?";
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, date);
+			psmt.setString(2, title);
+			rs=psmt.executeQuery();
+			while(rs.next()) {
+				Screening sc = new Screening(rs.getString("start_time"));
+				System.out.println(sc);
+				list.add(sc);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			disconn();
+		}
+		return list;
+	}	
 
 }
