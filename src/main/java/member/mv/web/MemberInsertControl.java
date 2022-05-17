@@ -1,13 +1,14 @@
-package mv.web;
+package member.mv.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mv.service.MovieService;
-import mv.vo.MovieVO;
+import member.mv.service.MovieService;
+import member.mv.vo.MovieVO;
 
 public class MemberInsertControl implements Control {
 
@@ -32,7 +33,8 @@ public class MemberInsertControl implements Control {
 		MovieService service = new MovieService();
 		service.memberInsert(vo);
 		
-		request.getRequestDispatcher("result/joinOutput.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("member.result/joinOutput.jsp").forward(request, response);
 
 		
 	}

@@ -1,9 +1,9 @@
-package mv.service;
+package member.mv.service;
 
 import java.util.List;
 
-import mv.dao.MovieDAO;
-import mv.vo.MovieVO;
+import member.mv.dao.MovieDAO;
+import member.mv.vo.MovieVO;
 
 public class MovieService {
 	MovieDAO dao = new MovieDAO();

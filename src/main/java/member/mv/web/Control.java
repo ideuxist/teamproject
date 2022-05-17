@@ -1,4 +1,4 @@
-package mv.web;
+package member.mv.web;
 
 import java.io.IOException;
 

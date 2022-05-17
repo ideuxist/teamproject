@@ -3,7 +3,7 @@
   <display-name>mv</display-name>
   <servlet>
     <servlet-name>front</servlet-name>
-    <servlet-class>mv.web.FrontController</servlet-class>
+    <servlet-class>member.mv.web.FrontController</servlet-class>
     <init-param>
       <param-name>charset</param-name>
       <param-value>UTF-8</param-value>  

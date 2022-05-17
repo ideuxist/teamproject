@@ -7,9 +7,9 @@
 <title>index test</title>
 <script type="text/javascript">
         
-        // 로그아웃 담당 JSP로 이동
+        // 로그아웃 jsp로 이동
         function logout(){
-            location.href="${pageContext.servletContext.contextPath }/view/logout.jsp";
+            location.href="${pageContext.servletContext.contextPath }/member.view/logout.jsp";
         }
     </script>
 </head>
@@ -23,8 +23,8 @@ out.print(id);
 
 %>
 <input type="button" value="로그아웃" onclick="logout()">
-<a href="view/join.jsp">회원가입</a>
-<a href="view/login.jsp">로그인</a>
-<a href="view/mypage.jsp">마이페이지</a>
+<a href="member.view/join.jsp">회원가입</a>
+<a href="member.view/login.jsp">로그인</a>
+<a href="member.view/mypage.jsp">마이페이지</a>
 </body>
 </html>

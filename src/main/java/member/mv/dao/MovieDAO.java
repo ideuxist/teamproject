@@ -1,10 +1,10 @@
-package mv.dao;
+package member.mv.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import mv.vo.MovieVO;
+import member.mv.vo.MovieVO;
 
 public class MovieDAO extends DAO{
 	

@@ -6,8 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>movie history</title>
+
 </head>
 <body>
+<% 
+session = request.getSession();
+String id = (String) session.getAttribute("id");
+String pw = (String) session.getAttribute("pass");
+
+if(id == null) {
+	out.print("로그인이 필요합니다");
+} else {
+%>
+
 <c:choose>
   <c:when test="${empty all }"><h3>예매 내역이 없습니다.</h3></c:when>
   <c:otherwise>
@@ -23,6 +34,8 @@
        </tbody>   
     </table>
   </c:otherwise>
-</c:choose>  
+</c:choose>
+
+<% } %>
 </body>
 </html>

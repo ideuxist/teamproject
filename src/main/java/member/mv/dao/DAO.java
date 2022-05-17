@@ -1,4 +1,4 @@
-package mv.dao;
+package member.mv.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

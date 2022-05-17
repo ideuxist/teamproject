@@ -1,4 +1,4 @@
-package mv.vo;
+package member.mv.vo;
 
 public class MovieVO {
 	String name;
