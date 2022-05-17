@@ -23,4 +23,8 @@ public class MovieService {
 	public List<MovieVO> movieHistory(String id) {
 		return dao.movieHistory(id);
 	}
+	
+	public MovieVO findId(String email) {
+		return dao.findId(email);
+	}
 }

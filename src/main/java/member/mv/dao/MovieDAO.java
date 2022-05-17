@@ -8,6 +8,25 @@ import member.mv.vo.MovieVO;
 
 public class MovieDAO extends DAO{
 	
+	public MovieVO findId(String email) {
+		conn = getConnect();
+		String sql = "select id from movie_member where email=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, email);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				MovieVO vo = new MovieVO();
+				vo.setId(rs.getString("id"));
+				return vo;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	
 	 public boolean duplicateIdCheck(String id)
 	    {	
 		 	boolean x = false;

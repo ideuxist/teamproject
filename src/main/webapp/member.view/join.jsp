@@ -31,10 +31,6 @@
       document.userInfo.idDuplication.value ="idUncheck";
   }
   
-  function goIndex() {
-	  
-  }
-   
 
 </script>
 </head>

@@ -4,10 +4,18 @@ public class MovieVO {
 	String name;
 	String id;
 	String passwd;
+	String email;
 	String movieTitle;
 	String movieDate;
 	String movieRoom;
 	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getMovieRoom() {
 		return movieRoom;
 	}
