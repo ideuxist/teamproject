@@ -1,6 +1,6 @@
 package co.reservation.vo;
 
-public class Screening {
+public class ScreeningVO {
 	private int screeningID;
 	private int movieID;
 	private int auditoriumID;
@@ -8,15 +8,24 @@ public class Screening {
 	
 	
 	
-	public Screening() { 
+
+	
+
+	public ScreeningVO() { 
 		super();
 	}
 	
-	public Screening(String screeningStart) {
+	public ScreeningVO(String screeningStart) {
 		this.screeningStart=screeningStart;
 	}
 	
-	public Screening(int screeningID, int movieID, int auditoriumID, String screeningStart) {
+	public ScreeningVO(int screeningID, String screeningStart) {
+		super();
+		this.screeningID = screeningID;
+		this.screeningStart = screeningStart;
+	}
+
+	public ScreeningVO(int screeningID, int movieID, int auditoriumID, String screeningStart) {
 		super();
 		this.screeningID = screeningID;
 		this.movieID = movieID;
@@ -47,7 +56,6 @@ public class Screening {
 	public void setScreeningStart(String screeningStart) {
 		this.screeningStart = screeningStart;
 	}
-
 	@Override
 	public String toString() {
 		return "Screening [screeningID=" + screeningID + ", movieID=" + movieID + ", auditoriumID=" + auditoriumID

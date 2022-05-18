@@ -1,21 +1,21 @@
 package co.reservation.vo;
 
-public class Movie {
+public class MovieVO {
 	
 	private int movieId;
 	private String movieTitle;
 	private int durationMin;
 	
-	public Movie() {
+	public MovieVO() {
 		super();
 	}
 
-	public Movie(String movieTitle) {
+	public MovieVO(String movieTitle) {
 		super();
 		this.movieTitle = movieTitle;
 	}
 
-	public Movie(int movieId, String movieTitle, int durationMin) {
+	public MovieVO(int movieId, String movieTitle, int durationMin) {
 		super();
 		this.movieId = movieId;
 		this.movieTitle = movieTitle;

@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="co.reservation.vo.SeatReservedVO"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +36,7 @@
 	<!-- 해당 상영일 선택가능 영화 불러오기 -->
 	<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
 				<c:forEach items="${seeDate}" var="date">
-				  <input type="radio" name="selectedDate" value="${date.screeningStart }">${date.screeningStart }<br>
+				  <input type="radio" name="selectedDate" value="${date.screeningStart}">${date.screeningStart}<br>
 				</c:forEach>
 		영화 선택 : <input type="submit" value="상영작보기">
 				  <input type="hidden" name="choice" value="currentMovie">
@@ -42,7 +45,7 @@
 	<!-- 해당 상영일 선택영화 가능회차 불러오기 -->	
 	<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
 		<c:forEach items="${movieList}" var="movie">
-			<input type="radio" name="selectedMovie" value="${movie.movieTitle}">${movie.movieTitle }(${selectedDate })<br>
+			<input type="radio" name="selectedMovie" value="${movie.movieTitle}">${movie.movieTitle}(${selectedDate})<br>
 			<input type="hidden" name="selectedDate" value="${selectedDate}">
 			<br>
 		</c:forEach>
@@ -50,28 +53,41 @@
 		<input type="hidden" name="choice" value="round">
 	</form>
 	
+	<!-- 영화 날짜 회차 선택후 남은 잔여좌석 불러오기 -->
 	<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
 		<c:forEach items="${round}" var="round">
-			<input type="radio" name="time" value=${round.screeningStart }>
-			${selectedMovie} (${selectedDate}) 상영시간${round.screeningStart }<br><br>
-			<input type="hidden" name="date" value="${selecedMovie}">
-			<input type="hidden" name="movie" value="${selectedDate}">
+			<input type="radio" name="time" value="${round.screeningStart}">
+			<input type ="hidden" name = "screeningId" value="${round.screeningID}">
+			${selectedMovie} (${selectedDate}) 상영시간${round.screeningStart}><br><br>
+			<input type="hidden" name="movie" value="${selectedMovie}">
+			<input type="hidden" name="date" value="${selectedDate}">
 		</c:forEach>
 		<br> 좌석조회: <input type="submit" value="조회"><br>
 		<input type="hidden" name="choice" value="searchSeat">
 		<br>
 	</form><hr><hr>
 	
-	<form action="" method="post">
-		상영일:<input type="text" name="date" value="${date }" readonly><br>
-		<br> 상영영화:<input type="text" name="movie" value="${movie }"
-			readonly><br>
-		<br> 상영시작시간:<input type="text" name="round" value="${round }"
-			readonly><br>
-		<br> <input type="submit" value="좌석선택"><br>
-		<br>
+	<!-- 좌석 선택 후 해당 좌석 예약 -->
+	<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
+		상영일:<input type="text" name="date" value="${selectedDate}" readonly><br><br> 
+		상영영화:<input type="text" name="movie" value="${selectedMovie}" readonly><br><br> 
+		상영시작시간:<input type="text" name="round" value="${selectedStartTime}"readonly><br><br> 
+		<input type ="hidden" name = "selectedScreeningId" value="${selectedScreeningId}">
+		<c:forEach items="${seat}" var="seat">
+				  <input type="checkbox" name="selectedSeat" value="${seat.seatId}">${seat.seatId}번
+		</c:forEach>
+		<input type="submit" value="예매하기"><br><br>
+	  <input type="hidden" name="choice" value="doReservation">
 	</form>
-
+	<c:choose>
+	<c:when test="${empty seldate}">
+	</c:when>
+	<c:otherwise>
+  <h1>${seldate} / ${selmovie} / ${selround} 예매 되었습니다 </h1>
+  </c:otherwise>
+  </c:choose>	
+	
+	
 	<div></div>
 	<div class="seat-wrapper"></div>
 

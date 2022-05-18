@@ -1,17 +1,27 @@
 package co.reservation.vo;
 
-public class SeatReservation {
+public class SeatReservedVO {
 
 	private int seatReservationId;
 	private int screeningId;
 	private int seatId;
 	private int reserSeat;
 
-	public SeatReservation() {
+	public SeatReservedVO() {
 		super();
 	}
 
-	public SeatReservation(int seatReservationId, int screeningId, int seatId, int reserSeat) {
+	
+	
+	public SeatReservedVO(int screeningId, int seatId) {
+		super();
+		this.screeningId = screeningId;
+		this.seatId = seatId;
+	}
+
+
+
+	public SeatReservedVO(int seatReservationId, int screeningId, int seatId, int reserSeat) {
 		super();
 		this.seatReservationId = seatReservationId;
 		this.screeningId = screeningId;

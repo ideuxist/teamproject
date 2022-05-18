@@ -1,16 +1,16 @@
 package co.reservation.vo;
 
-public class Seat {
+public class SeatVO {
 	private int seatId;
 	private String seatRow;
 	private String seatNumber;
 	private int auditorium_id;
 	
-	public Seat() {
+	public SeatVO() {
 		super();
 	}
 	
-	public Seat(int seatId, String seatRow, String seatNumber, int auditorium_id) {
+	public SeatVO(int seatId, String seatRow, String seatNumber, int auditorium_id) {
 		super();
 		this.seatId = seatId;
 		this.seatRow = seatRow;
