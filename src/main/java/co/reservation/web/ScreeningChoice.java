@@ -57,7 +57,7 @@ public class ScreeningChoice extends HttpServlet {
 			String date = request.getParameter("selectedDate");
 			String movie = request.getParameter("selectedMovie");
 			ReservationService service = new ReservationService();
-			List<ScreeningVO> screening = service.choiceRound(date,movie);
+			List<ScreeningVO> screening = service.choiceRound(movie);
 			request.setAttribute("selectedDate", date);
 			request.setAttribute("selectedMovie", movie);
 			request.setAttribute("round", screening);

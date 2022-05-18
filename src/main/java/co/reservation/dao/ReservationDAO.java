@@ -65,17 +65,16 @@ public class ReservationDAO extends DAO {
 		return list; 
 	}
 
-	public List<ScreeningVO> roundChoice(String date,String title) {
+	public List<ScreeningVO> roundChoice(String title) {
 		conn = getConn();
 		List<ScreeningVO> list = new ArrayList<ScreeningVO>();
 		String sql = "select s.screening_id as sid, to_char(s.screening_start,'hh24:mi') as start_time  "
 				+ "from movie m\r\n"
 				+ "inner join screening s on m.movie_id=s.movie_id\r\n"
-				+ "where to_char(s.screening_start,'yy-mm-dd')=? and movie_title=?";
+				+ "where s.screening_start >= sysdate and movie_title=?";
 		try {
 			psmt=conn.prepareStatement(sql);
-			psmt.setString(1, date);
-			psmt.setString(2, title);
+			psmt.setString(1, title);
 			rs=psmt.executeQuery();
 			while(rs.next()) {
 				ScreeningVO sc = new ScreeningVO(rs.getInt("sid")

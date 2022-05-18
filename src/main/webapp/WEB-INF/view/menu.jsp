@@ -25,7 +25,7 @@
 				<a class="list-group-item list-group-item-action list-group-item-light p-3"
 				href="${pageContext.request.contextPath}/view/">예정메뉴2</a> 
 				<a class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="${pageContext.request.contextPath}/ajax.html">자유게시판</a>
+				href="${pageContext.request.contextPath}/board/listArticle.tiles">자유게시판</a>
 		</div>
 	</div>
 
