@@ -24,7 +24,7 @@ public class MovieService {
 		return dao.movieHistory(id);
 	}
 	
-	public boolean duplicateIdCheck(MovieVO vo) {
+	public MovieVO duplicateIdCheck(MovieVO vo) {
 		return dao.duplicateIdCheck(vo);
 	}
 }

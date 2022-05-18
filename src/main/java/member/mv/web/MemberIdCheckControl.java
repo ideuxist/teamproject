@@ -21,28 +21,49 @@ public class MemberIdCheckControl implements Control {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("password");
 		MovieVO vo = new MovieVO();
+		System.out.println(1);
+		// id, passwd 값이 모두 있어야 함.
+		if(id.isBlank() || pw.isBlank()) {
+			id = null;
+			pw = null;
+			HttpSession session = null;
+			session = request.getSession();
+			session.setAttribute("id", vo.getId());
+			session.setAttribute("pw", vo.getPasswd());
+			request.getRequestDispatcher("").forward(request, response);
+		} else {
+			// id, passwd를 DAO에서 사용하기 위해 MovieVO 형태로 담음.
+			vo.setId(id);
+			vo.setPasswd(pw);
+			
+			// DAO 실행
+			vo = service.duplicateIdCheck(vo);
+			
+	        
+	        response.setContentType("text/html;charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	 
+	        HttpSession session = null;
+	        String chkId = vo.getId();
+       
+	     if(chkId == null) {
+				id = null;
+				pw = null;
+				session = null;
+				session = request.getSession();
+				session.setAttribute("id", id);
+				session.setAttribute("pw", id);
+				request.getRequestDispatcher("WEB-INF/view/login.jsp").forward(request, response);
+	     }
+			session = request.getSession();
+			session.setAttribute("id", vo.getId());
+			session.setAttribute("pw", vo.getPasswd());
+			
+			
+	        String path = "myapp.homepage.tiles";
+	        request.getRequestDispatcher(path).forward(request, response);
+		}
 		
-		// id, passwd를 DAO에서 사용하기 위해 MovieVO 형태로 담음.
-		vo.setId(id);
-		vo.setPasswd(pw);
-		
-		// DAO 실행
-		boolean check = service.duplicateIdCheck(vo);
-		
-        
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
- 
-        HttpSession session = null;
-		
-     
-		session = request.getSession();
-		session.setAttribute("id", id);
-		session.setAttribute("pw", pw);
-
-
-        String path = "member.result/searchOutput.jsp";
-        request.getRequestDispatcher(path).forward(request, response);
         
        
 	}

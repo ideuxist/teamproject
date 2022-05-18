@@ -4,14 +4,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import member.mv.service.MovieService;
 import member.mv.vo.MovieVO;
 
 public class MovieDAO extends DAO{
 	
-	 public boolean duplicateIdCheck(MovieVO vo){	
+	 public MovieVO duplicateIdCheck(MovieVO vo){	
 	        conn = getConnect();
-	        System.out.println(conn);
 	        String sql="SELECT * FROM movie_member WHERE id=? and passwd = ?";
 	       
 	        try {
@@ -20,15 +18,19 @@ public class MovieDAO extends DAO{
 				psmt.setString(2, vo.getPasswd());
 				rs = psmt.executeQuery();
 				if(rs.next()) {
+					vo.setId(rs.getString("id"));
+					vo.setPasswd(rs.getString("passwd"));
 					System.out.println("건수 확인용");
+
 				}
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally {
 				disconnect();
 			}
-		return true;
+		return vo;
 	        
 	    } // end duplicateIdCheck()
 
