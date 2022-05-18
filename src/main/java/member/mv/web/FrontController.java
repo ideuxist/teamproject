@@ -25,7 +25,7 @@ public class FrontController extends HttpServlet{
 	
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.setCharacterEncoding(charset);
+		req.setCharacterEncoding("UTF-8");
 		
 		String url = req.getRequestURI();
 		String context = req.getContextPath();

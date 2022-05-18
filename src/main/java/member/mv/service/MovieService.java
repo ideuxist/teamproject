@@ -23,4 +23,8 @@ public class MovieService {
 	public List<MovieVO> movieHistory(String id) {
 		return dao.movieHistory(id);
 	}
+	
+	public boolean duplicateIdCheck(MovieVO vo) {
+		return dao.duplicateIdCheck(vo);
+	}
 }

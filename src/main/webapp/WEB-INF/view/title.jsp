@@ -6,7 +6,10 @@
 <meta charset="UTF-8">
 <title>title</title>
 <style>
-	margin :auto;
+	body{
+		text-align : center;
+	} 
+	
 </style>
 </head>
 <body>

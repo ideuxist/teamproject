@@ -4,27 +4,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import member.mv.service.MovieService;
 import member.mv.vo.MovieVO;
 
 public class MovieDAO extends DAO{
 	
-	 public boolean duplicateIdCheck(String id)
-	    {	
-		 	boolean x = false;
+	 public boolean duplicateIdCheck(MovieVO vo){	
 	        conn = getConnect();
-	        String sql="SELECT ID FROM movie_MEMBER WHERE ID=?";
+	        System.out.println(conn);
+	        String sql="SELECT * FROM movie_member WHERE id=? and passwd = ?";
+	       
 	        try {
 				psmt = conn.prepareStatement(sql);
-				psmt.setString(1, id);
+				psmt.setString(1, vo.getId());
+				psmt.setString(2, vo.getPasswd());
 				rs = psmt.executeQuery();
-				if(rs.next()) x=true;
+				if(rs.next()) {
+					System.out.println("건수 확인용");
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally {
 				disconnect();
 			}
-			return x;
+		return true;
 	        
 	    } // end duplicateIdCheck()
 

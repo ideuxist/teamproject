@@ -14,7 +14,7 @@
   <h3>${error }</h3>
   <h3>${result }</h3>
   
-  <form action="${pageContext.servletContext.contextPath }/memberSearch.do" method="post">
+  <form action="${pageContext.servletContext.contextPath }/memberSearch.do" method="get">
   <input type="text" name="id" placeholder="아이디"><br>
   <input type="password" name="passwd" placeholder="비밀번호"><br>
   <input type="hidden" name="job" value="search">

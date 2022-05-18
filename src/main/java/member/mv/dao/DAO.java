@@ -16,11 +16,12 @@ public class DAO {
 	public Connection getConnect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver"); // 오라클 접속 주소:유저 아이디:비밀번호 이 3의 정보가 맞으면 커넥션 타입의 객체를 리턴해준다
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@dbdeuxist01_high?TNS_ADMIN=C:\\\\Dev\\\\Wallet_DBdeuxist01", "admin", "Yd0534212460");
+			System.out.println("연결성공!");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		//System.out.println("연결성공!");
+		
 		return conn;
 	}
 
