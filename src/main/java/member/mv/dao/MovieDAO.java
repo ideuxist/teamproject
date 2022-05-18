@@ -11,17 +11,16 @@ public class MovieDAO extends DAO{
 	 public MovieVO duplicateIdCheck(MovieVO vo){	
 	        conn = getConnect();
 	        String sql="SELECT * FROM movie_member WHERE id=? and passwd = ?";
-	       
+	       MovieVO vovo = new MovieVO();
 	        try {
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, vo.getId());
 				psmt.setString(2, vo.getPasswd());
 				rs = psmt.executeQuery();
 				if(rs.next()) {
-					vo.setId(rs.getString("id"));
-					vo.setPasswd(rs.getString("passwd"));
+					vovo.setId(rs.getString("id"));
+					vovo.setPasswd(rs.getString("passwd"));
 					System.out.println("건수 확인용");
-
 				}
 				
 			} catch (SQLException e) {
@@ -30,7 +29,7 @@ public class MovieDAO extends DAO{
 			} finally {
 				disconnect();
 			}
-		return vo;
+		return vovo;
 	        
 	    } // end duplicateIdCheck()
 

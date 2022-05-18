@@ -8,7 +8,11 @@
 <title>login, logout</title>
 	<style>
 		#login{
-			text-align: right;
+			text-align: right;	
+		}
+		
+		.login{
+			display: inline-block;
 		}
 	</style>
 </head>
@@ -21,14 +25,14 @@
 	%>
 	
 	
-	<%if(id ==null){%>
-	<form action ="${pageContext.servletContext.contextPath}/login.do" method = "post">
+	<%if(id == null){%>
+	<form action ="${pageContext.servletContext.contextPath}/login.do" method = "post" class= "login">
 		아이디 : <input type = "text" name = "id">
 		비밀번호 : <input type = "text" name = "password">
 	<input type ="submit" value ="로그인" >
 	</form>
 	
-	<form action = "${pageContext.servletContext.contextPath}/member.view/join.jsp" method = "post">
+	<form action = "${pageContext.servletContext.contextPath}/member.view/join.jsp" method = "post" class= "login">
 		<input type = "submit" value = "회원가입">
 	</form>
 	
