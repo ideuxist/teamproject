@@ -8,8 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="${pageContext.servletContext.contextPath }/memberFindId.do" method="post">
 가입할 때 사용한 이메일 주소를 입력하세요<br>
+<hr>
+${error }
+<form action="${pageContext.servletContext.contextPath }/memberFindId.do" method="post">
 <input type="email" name="email"> 
 <input type="submit" value="확인">
 </form>

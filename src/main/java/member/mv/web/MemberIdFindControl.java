@@ -10,15 +10,17 @@ import member.mv.service.MovieService;
 import member.mv.vo.MovieVO;
 
 public class MemberIdFindControl implements Control {
-
+	
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
-		System.out.println(email);
-		MovieService dao = new MovieService();
-		MovieVO vo = dao.findId(email);
-		request.setAttribute("vo", vo);
-		request.getRequestDispatcher("member.result/findIdOutput.jsp").forward(request, response);
+	
+			MovieService dao = new MovieService();
+			MovieVO vo = dao.findId(email);
+			request.setAttribute("vo", vo);
+			request.getRequestDispatcher("member.result/findIdOutput.jsp").forward(request, response);
+		
 	}
 
 }

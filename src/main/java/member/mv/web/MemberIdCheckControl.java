@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import member.mv.dao.MovieDAO;
 
 public class MemberIdCheckControl implements Control {
-
+//아이디 중복 확인 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");

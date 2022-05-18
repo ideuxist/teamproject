@@ -19,6 +19,7 @@ public class MemberInsertControl implements Control {
 		String id = request.getParameter("id");
 		String passwd = request.getParameter("passwd");
 		String passwdcf = request.getParameter("passwdcf");
+		String email = request.getParameter("email");
 		
 		if (passwd == passwdcf) {
 			
@@ -28,6 +29,7 @@ public class MemberInsertControl implements Control {
 		vo.setId(id);
 		vo.setName(name);
 		vo.setPasswd(passwd);
+		vo.setEmail(email);
 		
 		
 		MovieService service = new MovieService();

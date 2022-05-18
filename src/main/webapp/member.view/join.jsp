@@ -43,6 +43,7 @@
     <input type="hidden" name="idDuplication" value="idUncheck">
    	비밀번호 <input type="password" name="passwd"><br>
    	비밀번호 확인 <input type="password" name="passwdcheck"><br>
+   	이메일 <input type="email" name="email">
    	<input type="submit" value="회원가입"><br>
    	<input type="button" value="취소" onclick="location.href='login.jsp'">
   </form>

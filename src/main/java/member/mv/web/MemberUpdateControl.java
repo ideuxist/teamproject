@@ -17,11 +17,12 @@ public class MemberUpdateControl implements Control {
 		
 		String passwd = request.getParameter("passwd");
 		String id = request.getParameter("id");
+		String email = request.getParameter("email");
 		
 		MovieVO vo = new MovieVO();
 		vo.setId(id);
 		vo.setPasswd(passwd);
-		
+		vo.setEmail(email);
 		
 		MovieService service = new MovieService();
 		service.memberModify(vo);

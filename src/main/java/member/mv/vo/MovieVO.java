@@ -54,8 +54,10 @@ public class MovieVO {
 	}
 	@Override
 	public String toString() {
-		return "MovieVO [movieTitle=" + movieTitle + ", movieDate=" + movieDate + ", movieRoom=" + movieRoom + "]";
+		return "MovieVO [passwd=" + passwd + "]";
 	}
+
+	
 	
 	
 	

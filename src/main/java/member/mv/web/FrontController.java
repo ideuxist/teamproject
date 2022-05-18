@@ -22,6 +22,7 @@ public class FrontController extends HttpServlet{
 		list.put("/memberSearch.do", new MemberSearchControl());
 		list.put("/memberIdCheck.do", new MemberIdCheckControl());
 		list.put("/memberFindId.do", new MemberIdFindControl());
+		list.put("/memberFindPw.do", new MemberPwFindControl());
 	}
 	
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
