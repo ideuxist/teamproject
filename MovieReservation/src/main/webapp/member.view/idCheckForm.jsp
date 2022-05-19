@@ -11,8 +11,10 @@ var httpRequest = null;
 // httpRequest 객체 생성
 function getXMLHttpRequest(){
     var httpRequest = null;
-
-    if(window.ActiveXObject){
+// 익스플로러 구형 버전일 경우
+// 필요없으니까 일단 주석처리
+// 추후 머지하고 잘 돌아가는 거 확인하면 완전 삭제할 것 
+/*     if(window.ActiveXObject){
         try{
             httpRequest = new ActiveXObject("Msxml2.XMLHTTP");    
         } catch(e) {
@@ -21,7 +23,9 @@ function getXMLHttpRequest(){
             } catch (e2) { httpRequest = null; }
         }
     }
-    else if(window.XMLHttpRequest){
+    else  */
+    	
+    	if(window.XMLHttpRequest){
         httpRequest = new window.XMLHttpRequest();
     }
     return httpRequest;    
@@ -45,6 +49,7 @@ function idCheck(){
     else if((id < "0" || id > "9") && (id < "A" || id > "Z") && (id < "a" || id > "z")){ 
         alert("한글 및 특수문자는 아이디로 사용하실 수 없습니다.");
         return false;
+        
     }
     else
     {
