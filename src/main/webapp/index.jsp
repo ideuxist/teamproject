@@ -16,4 +16,4 @@
 	<a href = "ajax.html">Ajax 호출</a> -->
 	<jsp:forward page="movie.reservation.tiles"/>
 </body>
-</html>
+</html>  
